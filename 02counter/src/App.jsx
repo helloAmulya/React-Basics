@@ -19,6 +19,11 @@ function App() {
 
     console.log("value added", counter);
     setCounter(counter + 1);
+
+    // setCounter(counter + 1); // calling multiple times will not increase the value
+    // setCounter(counter + 1);
+    // a callback in setCounter will work
+    setCounter((prevCounter) => prevCounter + 1); // this will work
   };
 
   const removeValue = () => {
@@ -26,7 +31,7 @@ function App() {
     setCounter(counter - 1);
 
     if (counter <= 0) {
-      console.log("Value cannot go in negative")
+      console.log("Value cannot go in negative");
       setCounter(0);
     }
   };
