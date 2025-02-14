@@ -20,8 +20,8 @@ function App() {
       let char = Math.floor(Math.random() * str.length + 1);
       pass += str.charAt(char);
     }
-
     setpswrd(pass);
+    
   }, [numIn, len, charIn, setpswrd]);
 
   // using the hook useEffect to run (call) the password generator

@@ -14,8 +14,7 @@ function InputBox({
   className = "",
 }) {
   const amountInputId = useId();
-
-  // useId hook use to generate a particulat id (random id assigned where required)
+  // useId hook use to generate a particular id (random id assigned where required)
 
   return (
     <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
@@ -39,6 +38,7 @@ function InputBox({
           }
         />
       </div>
+
       <div className="w-1/2 flex flex-wrap justify-end text-right">
         <p className="text-black/40 mb-2 w-full">Currency Type</p>
         <select
@@ -50,7 +50,7 @@ function InputBox({
           {currencyOptions.map((currency) => (
             <option key={currency} value={currency}>
               {currency}
-              {/* do write any currecny here unless required, use {currency to displayt all the currencies} */}
+              {/* do write any currency here unless required, use {currency} to display all the currencies} */}
             </option>
           ))}
         </select>

@@ -6,6 +6,11 @@ import useCurrInfo from "./hooks/useCurrinfo";
 import { ArrowUpDown } from "lucide-react";
 //  for swap icon
 
+
+//  the below syntax for custom styling
+console.log("%c Hello Developer! ", "color: yellow; font-size: 16px;");
+console.log("%c why are you here?", "color: lightgreen; font-size: 14px;");
+
 function App() {
   const [amount, setAmount] = useState(0);
   const [from, setFrom] = useState("usd");
