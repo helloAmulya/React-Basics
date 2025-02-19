@@ -45,14 +45,14 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
-      {/* creating a route */}
+      {/* creating a route inside a route */}
       <Route path="user/:userid" element={<User />} />
       <Route loader={githubInfoLoader} path="github" element={<Github />} />
     </Route>
   )
 );
 /* 
- we can call the api inside the loader itself, and loader is used to optimize as it start the
+ we can call the api inside the loader itself, and loader is used to optimize as it starts the
  api call before 
 */
 
