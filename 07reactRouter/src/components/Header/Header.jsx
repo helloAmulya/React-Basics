@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-//  we dont use a tag inplace of link because the full page refreshes
+//  we dont use 'a' tag inplace of link because the full page refreshes
 // navlink provides additional features
 
 export default function Header() {
@@ -36,7 +36,7 @@ export default function Header() {
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               <li>
                 <NavLink
-                to="/"
+                  to="/"
                   className={(isActive) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
                       isActive ? "text-orange-700" : "text-gray-600"
@@ -47,8 +47,8 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink 
-                to="/about"
+                <NavLink
+                  to="/about"
                   className={(isActive) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
                       isActive ? "text-orange-700" : "text-gray-600"
@@ -59,8 +59,8 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink 
-                to="/contact"
+                <NavLink
+                  to="/contact"
                   className={(isActive) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
                       isActive ? "text-orange-700" : "text-gray-600"
@@ -71,8 +71,8 @@ export default function Header() {
                 </NavLink>
               </li>
               <li>
-                <NavLink 
-                to="/github"
+                <NavLink
+                  to="/github"
                   className={(isActive) =>
                     `block py-2 pr-4 pl-3 duration-200 ${
                       isActive ? "text-orange-700" : "text-gray-600"
