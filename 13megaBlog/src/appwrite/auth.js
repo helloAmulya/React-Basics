@@ -10,7 +10,7 @@ export class AuthService {
     constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.ProjectId);
+            .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client)
     }
 
@@ -41,14 +41,13 @@ export class AuthService {
 
     async login({ email, password }) {
         try {
+            // return await this.account.createEmailSession(email, password); // this has changed
             return await this.account.createEmailPasswordSession(email, password);
-
         } catch (error) {
             console.log("Appwrite service :: login :: error ", error);
             throw error;
         }
     }
-
 
     async getCurrentUser() {
         try {
@@ -73,5 +72,6 @@ export class AuthService {
 };
 const authService = new AuthService();
 // this step is done to return / give the object 
+
 export default authService
 

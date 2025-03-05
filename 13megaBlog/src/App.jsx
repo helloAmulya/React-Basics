@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import authService from "./appwrite/auth";
-import { Header, Footer } from "./components";
 import { login, logout } from "./store/authSlice";
+import { Header, Footer } from "./components";
+import { Outlet } from "react-router-dom";
 
 import "./App.css";
 
@@ -21,7 +22,6 @@ function App() {
         if (userData) {
           dispatch(login({ userData }));
         } else {
-          // dispatch(logout);
           dispatch(logout());
         }
       })
@@ -29,11 +29,11 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between ">
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
       <div className="w-full block">
         <Header />
         <main>
-          {/* Todo: <Outlet /> */}
+          Todo: <Outlet />
         </main>
         <Footer />
       </div>

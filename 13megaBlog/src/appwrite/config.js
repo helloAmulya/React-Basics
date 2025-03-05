@@ -5,20 +5,19 @@ export class Service {
     client = new Client();
     databases;
     bucket;// or storage
+
     constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
-            .setEndpoint(conf.appwriteProjectId);
+            .setProject(conf.appwriteProjectId);
 
-        this.databases = new Databases();
-        this.bucket = new Storage();
+        this.databases = new Databases(this.client);
+        this.bucket = new Storage(this.client);
     }
 
 
-    async createPost({ title, slug, content, featuredImage, status, userId }) {
-
+    async createPost({ title, slug, content, featuredimage, status, userId }) {
         try {
-
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -26,21 +25,17 @@ export class Service {
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredimage,
                     status,
                     userId,
-
                 }
-
             )
-
         } catch (error) {
-            console.log("Appwrite service :: createPost :: error", error);
+            console.log("Appwrite serive :: createPost :: error", error);
         }
-
     }
 
-    async updatePost(slug, { title, content, featuredImage, status }) {
+    async updatePost(slug, { title, content, featuredimage, status }) {
         // we take slug outside to take the document id (slug will give the id)
 
         try {
@@ -52,7 +47,7 @@ export class Service {
                 {
                     title,
                     content,
-                    featuredImage,
+                    featuredimage,
                     status,
 
                 }
@@ -86,24 +81,23 @@ export class Service {
     }
 
     async getPost(slug) {
-
         try {
-
             return await this.databases.getDocument(
-                // getDocument to get only single doc
-                // use listDocuments for all 
-
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
+                // getDocument to get only single doc
+                // use listDocuments for all 
+
             )
         } catch (error) {
-            console.log("Appwrite service :: getPost :: error", error);
-            return false;
+            console.log("Appwrite serive :: getPost :: error", error);
+            return false
         }
     }
 
-    async allPost(queries = [Query.equal('status', ['active'])]) {
+
+    async getPosts(queries = [Query.equal('status', ['active'])]) {
 
         // we need to create indexes in the appwrite else we cannot apply queries here
         //  because it requires a key i.e 'status'

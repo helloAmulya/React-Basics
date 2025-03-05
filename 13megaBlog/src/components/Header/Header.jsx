@@ -13,27 +13,27 @@ function Header() {
   const navItems = [
     {
       name: "Home",
-      slug: "/", // url
+      slug: "/",
       active: true,
     },
     {
       name: "Login",
-      slug: "/login", // url
+      slug: "/login",
       active: !authStatus,
     },
     {
       name: "Signup",
-      slug: "/signup", // url
+      slug: "/signup",
       active: !authStatus,
     },
     {
       name: "All Posts",
-      slug: "/all-posts", // url
+      slug: "/all-posts",
       active: authStatus,
     },
     {
       name: "Add Post",
-      slug: "/add-post", // url
+      slug: "/add-post",
       active: authStatus,
     },
   ];
@@ -68,7 +68,6 @@ function Header() {
                 <LogoutBtn />
               </li>
             )}
-            
           </ul>
         </nav>
       </Container>
