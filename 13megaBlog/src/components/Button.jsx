@@ -5,7 +5,7 @@ import React from "react";
 function Button({
   children,
   type = "button",
-  bgColor = "bg-blue-400",
+  bgColor = "bg-blue-500",
   textColor = "text-white",
   className = "",
   ...props
@@ -13,7 +13,7 @@ function Button({
 }) {
   return (
     <button
-      className={`px-4 py-2 rounded-lg ${className} ${textColor} ${bgColor}`}
+      className={`px-6 py-2 rounded-full inline-block duration-200 hover:bg-white hover:text-black  ${className} ${textColor} ${bgColor}`}
       // apart from these, user can give other custom css
       {...props}
       // ...props  are for extra properties, like onClick, disabled, onMouseEnter etc.
