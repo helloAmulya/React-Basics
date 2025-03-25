@@ -1,5 +1,7 @@
 import React from "react";
-import { Editor } from "tinymce";
+// import { Editor } from "tinymce";
+import { Editor } from "@tinymce/tinymce-react";
+
 import { Controller } from "react-hook-form";
 import conf from "../conf/conf";
 

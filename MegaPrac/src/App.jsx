@@ -26,16 +26,25 @@ function App() {
 
   // conditional rendering
 
+  // return !loading ? (
+  //   <div className="min-h-screen flex flex-wrap content-between bg- text-white ">
+  //     <div className=" w-full block">
+  //       <Header />
+  //       <main>
+  //         {/* main tag is mainly for seo purposes and nothing else */}
+  //         <Outlet />
+  //       </main>
+  //       <Footer />
+  //     </div>
+  //   </div>
+  // ) : null;
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-950 text-white ">
-      <div className=" w-full block">
-        <Header />
-        <main>
-          {/* main tag is mainly for seo purposes and nothing else */}
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+    <div className="min-h-screen flex flex-col bg-transparent text-white">
+      <Header />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   ) : null;
 }

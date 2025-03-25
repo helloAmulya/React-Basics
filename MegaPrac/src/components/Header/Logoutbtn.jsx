@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth";
-import {logout } from "../../store/authSlice";
+import { logout } from "../../store/authSlice";
 
 function Logoutbtn() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function Logoutbtn() {
   return (
     <div>
       <button
-        className="inline-block rounded-full px-6 py-2 bg-white text-xl hover:shadow-green-300 hover:scale-105 duration-200"
+        className="inline-block px-6 py-3 rounded-full duration-200 hover:scale-105 bg-gradient-to-r from-blue-400 via-white to-pink-400 bg-clip-text text-transparent text-xl"
         onClick={logoutHandler}
       >
         logout

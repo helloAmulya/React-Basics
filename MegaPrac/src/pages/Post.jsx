@@ -13,9 +13,21 @@ function Post() {
   const userData = useSelector((state) => state.auth.userData);
   const isAuthor = post && userData ? post.userId === userData.$id : false;
 
+  // useEffect(() => {
+  //   if (slug) {
+  //     appwriteService.getPost(slug).then((post) => {
+  //       if (post) setPosts(post);
+  //       else navigate("/");
+  //     });
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, [slug, navigate]);
+
   useEffect(() => {
     if (slug) {
       appwriteService.getPost(slug).then((post) => {
+        // console.log("Fetched post:", post); 
         if (post) setPosts(post);
         else navigate("/");
       });
@@ -25,7 +37,7 @@ function Post() {
   }, [slug, navigate]);
 
   const deletePost = () => {
-    appwriteService.deltePost(post.$id).then((status) => {
+    appwriteService.deletePost(post.$id).then((status) => {
       if (status) {
         appwriteService.deleteFile(post.featuredimage);
         navigate("/");
@@ -36,7 +48,7 @@ function Post() {
   return post ? (
     <div className="py-8">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        <div className="w-full flex justify-center mb-4 relative rounded-xl p-2">
           <img
             src={appwriteService.getFilePreview(post.featuredimage)}
             alt={post.title}

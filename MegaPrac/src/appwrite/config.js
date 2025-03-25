@@ -40,6 +40,20 @@ export class Service {
         }
     }
 
+
+    // async createPost({ title, slug, content, featuredimage, status, userId }) {
+    //     try {
+    //         return await this.databases.createDocument(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             ID.unique(), // ✅ Generate unique ID
+    //             { title, slug, content, featuredimage, status, userId }
+    //         );
+    //     } catch (error) {
+    //         console.log("Appwrite service :: createPost :: error", error);
+    //     }
+    // }
+
     async updatePost(slug, { title, content, featuredimage, status }) {
         // take the id of the post i.e. the slug
 
@@ -84,41 +98,49 @@ export class Service {
     }
 
 
+    // async getPost(slug) {
+    //     try {
+    //         await this.databases.getDocument(
+    //             conf.appwriteDatabaseId,
+    //             conf.appwriteCollectionId,
+    //             slug,
+    //         )
+
+    //     } catch (error) {
+    //         console.log("Appwrite serive :: getPost :: error", error);
+    //     }
+    // }
+
     async getPost(slug) {
         try {
-            await this.databases.getDocument(
+            return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
-            )
-
+                slug
+            );
         } catch (error) {
-            console.log("Appwrite serive :: getPost :: error", error);
+            console.log("Appwrite service :: getPost :: error", error);
+            return null; // Return null if post is not found
         }
     }
+    
 
     // now like get post, we will get all the posts, but with the condition that are the active or not
     // therefore we will use Query 
 
-    async allPost(queries = [Query.equal('status', ['active'])]) {
-
-
+    async allPost(queries = [Query.equal("status", "active")]) {
         try {
-
-
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                queries,
-                // we can define queries here also , or at the top declaration
-            )
-
+                queries
+            );
         } catch (error) {
             console.log("Appwrite service :: allPost :: error", error);
             return false;
         }
-
     }
+
 
 
 

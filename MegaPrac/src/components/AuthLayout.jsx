@@ -26,7 +26,7 @@ function Protected({ children, authentication = true }) {
   //   navigate("/");
   // }
 
-  return <div>Protected</div>;
+  return loader ? <h1>Loading...</h1> : <>{children}</>;
 }
 
 export default Protected;
