@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Logo, LogoutBtn } from "../index";
 import { Link, useNavigate } from "react-router-dom";
-import { useNavigation } from "react-router-dom";
 import { useSelector } from "react-redux";
 // useNavigation is used to track navigation state
 
@@ -52,7 +51,7 @@ function Header() {
           <ul className="ml-auto flex">
             {navItems.map((item) =>
               item.active ? (
-                <li keys={item.name}>
+                <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
                     className="inline-block px-6 py-3 rounded-full duration-200 hover:scale-105 bg-gradient-to-r from-blue-400 via-white to-pink-400 bg-clip-text text-transparent text-xl"

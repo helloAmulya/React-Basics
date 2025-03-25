@@ -18,7 +18,7 @@
     "react-hook-form": "^7.54.2",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.2.0",
-    "tinymce": "^7.7.1"
+    "tinymce": "^7.7.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

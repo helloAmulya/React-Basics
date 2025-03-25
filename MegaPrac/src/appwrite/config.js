@@ -1,4 +1,4 @@
-import conf from '../conf/conf'
+import conf from '../conf/conf.js'
 import { Client, ID, Databases, Storage, Query } from "appwrite"
 
 export class Service {
@@ -9,9 +9,10 @@ export class Service {
     constructor() {
         this.client
             .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId)
-        this.databases = new Databases(this.databases);
-        this.storage = new Storage(this.storage)
+            .setProject(conf.appwriteProjectId);
+
+        this.databases = new Databases(this.client);
+        this.storage = new Storage(this.client)
     }
 
     async createPost({ title, slug, content, featuredimage, status, userId })
@@ -99,9 +100,12 @@ export class Service {
     // now like get post, we will get all the posts, but with the condition that are the active or not
     // therefore we will use Query 
 
-    async listPosts(queries = [Query.equal('status', ['active'])]) {
+    async allPost(queries = [Query.equal('status', ['active'])]) {
+
 
         try {
+
+
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -113,6 +117,7 @@ export class Service {
             console.log("Appwrite service :: allPost :: error", error);
             return false;
         }
+
     }
 
 
